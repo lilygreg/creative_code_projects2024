@@ -1,10 +1,10 @@
 function setup() {
-  createCanvas(400, 800);
+  createCanvas(windowWidth, windowHeight);
   angleMode();
 }
 
 function draw() {
-  background(255, 255, 255);
+  background(255,255,255);
   console.log(mouseX, mouseY);
   noStroke();
 
