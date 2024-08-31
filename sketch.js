@@ -1,12 +1,36 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 800);
   angleMode();
 }
 
 function draw() {
-  background(255,255,255);
+  background(255, 255, 255);
   console.log(mouseX, mouseY);
   noStroke();
+
+  //ground
+  fill(170, 232, 137);
+  ellipse(100, 840, 700, 500);
+//flowers
+  fill(255,255,255)
+  ellipse(35,668,20,30);
+  ellipse(35,699,20,30);
+  ellipse(52,685,30,20);
+  ellipse(18,685,30,20);
+  
+  ellipse(304,723,20,30);
+  ellipse(304,753,20,30);
+  ellipse(320,738,30,20);
+  ellipse(289,738,30,20);
+  
+  ellipse(139,785,20,30);
+  ellipse(155,800,30,20);
+  ellipse(124,800,30,20);
+  
+  fill(237, 242, 99);
+  ellipse(35, 686, 20);
+  ellipse(304,740,20);
+  ellipse(139,800,20);
 
   //body
   fill(230, 249, 255);
