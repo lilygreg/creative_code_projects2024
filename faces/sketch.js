@@ -1,53 +1,55 @@
-let dogImage;
+let bunnyhead;
+let eyeball1;
+let eyeball2;
+let backdrop;
 
-function preload(){
-dogImage = loadImage("cute-cartoon-dog-free-png.png")
+function preload() {
+  bunnyhead = loadImage("bunnypng copy.png");
+  eyeball1 = loadImage("bunnyeyeball1 copy.png");
+  eyeball2 = loadImage("bunnyeyeball2 copy.png");
+  backdrop = loadImage("BUNNYBACKDROP copy.jpg");
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  frameRate(5);
+  imageMode(CENTER)
+  
+  fullscreen()
+  image(backdrop,windowWidth/2,windowHeight/2, backdrop.width/2.5,backdrop.height/2.8);
+}
+
+function draw() {
+
+
+  let f = new Face();
+  f.display();
 }
 
 
-function setup() {
-    createCanvas(400, 400);
-  frameRate(10)
-  }
-  
-  function draw() {
-    //background(220);
+class Face {
+  //properties
+  constructor() {
+    this.size = random(100, 200);
+    this.x = random(width);
+    this.y = random(height/2.5,height);
    
-    let f = new Face();
-    f.display();
+    this.eyeDimension = random(20, 60);
+    this.eyeDistance = random(25,55);
+    this.eyeHeight = random(-40, -5);
   }
-  
-  //blueprint for a face object
-  class Face {
-    //properties
-    constructor() {
-      this.size = random(30,60);
-      this.x = random(width);
-      this.y = random(height);
-      this.skinColor = color(random(256), random(256), random(256));
-      //random(256) = 0 - 255.99999999999
-      this.eyeColor = color(random(256), random(256), random(256));
-      this.eyeSize = random(5,15)
-      this.eyeDistance = random(10,20);
-      this.eyeHeight = random(-10,17);
-      this.mouthSize = random(10,20);
-      this.mouthPosition = random(-10,10);
-  
-    }
-  
-    //methods
-    display() {
-        noStroke()
-      //draw face
-      fill(this.skinColor);
-      ellipse(this.x, this.y, this.size);
-      
-      //draw eyes
-      fill(this.eyeColor);
-      image(dogImage, this.x - this.eyeDistance/2, this.y - this.eyeHeight, this.eyeSize,this.eyeSize)
-      text("👁️",this.x + this.eyeDistance/2,this.y - this.eyeHeight,this.eyeSize)
-      
-  
-    }
+
+  //methods
+  display() {
+    noStroke();
+    //draw face
+    image(bunnyhead,this.x, this.y, this.size/1.5,this.size);
+
+    //draw eyes
+     image(eyeball2,this.x + this.eyeDistance/2, this.y - this.eyeHeight,this.eyeDimension,this.eyeDimension)
+    
+   image(eyeball1,this.x - this.eyeDistance/2, this.y - this.eyeHeight, this.eyeDimension,this.eyeDimension);
+   
+   
   }
-  
+}
