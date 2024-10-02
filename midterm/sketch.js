@@ -1,49 +1,111 @@
+// images
+let defaultfaceImg;
+let nailsImg;
+let nailpolishImg;
+let bouquetImg;
+let withflowersImg;
+let menuImg;
+
+// things
 let defaultface;
 let nails;
-let polish;
+let nailpolish;
 let bouquet;
-let happyflowers;
+let withflowers;
 let menu;
 
-function preload(){
-  defaultface = loadImage("midterm_defaultface.png");
-  nails = loadImage("withnails.png");
- polish = loadImage("justnailpolish.png");
- bouquet = loadImage("bouquet.png");
-  happyflowers = loadImage("withflowers!.png");
-  menu = loadImage("menu.png");
+let things = [];
+
+function preload() {
+  defaultfaceImg = loadImage("midterm_defaultface.png");
+  withnailsImg = loadImage("withnails.png");
+  nailpolishImg = loadImage("justnailpolish.png");
+  bouquetImg = loadImage("bouquet.png");
+  withflowersImg = loadImage("withflowers!.png");
+  menuImg = loadImage("menu.png");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   imageMode(CENTER);
 
+  nailpolish = new Thing(200, 100, "nail polish", nailpolishImg);
+  bouquet = new Thing(200, 150, "bouquet", bouquetImg);
+
+  things.push(nailpolish, bouquet)
+
 }
+
+function mouseDragged() {
+  for (let i = 0; i < things.length; i++) {
+    let thing = things[i];
+    if (dist(mouseX, mouseY, thing.pos.x, thing.pos.y) < min(thing.image.width/2, thing.image.height/2)) {
+      thing.active = true;
+      console.log(thing)
+    } else {
+      thing.active = false;
+    }
+    thing.update()
+  }
+}
+
+// function mouseReleased(){
+//   if(dist() < ){
+
+//   }
+//  else{
+//   thing.pos = thing.startingpos
+//  }
+// }
+
+
 
 function draw() {
-//background(220);
+  clear();
 
-//default face
-if(mouseX > windowWidth/4) {
-  image(defaultface,windowWidth/3,windowHeight/2,defaultface.width/4,defaultface.height/4);
+  // nailpolish.display()
+  // bouquet.display()
+
+  for(let i=0; i < things.length; i++) {
+    things[i].display()
+  }
+  // let t = new Thing();
+  // t.display();
+
+  //menu base
+  // image(menu,windowWidth*4/5,windowHeight/2,menu.width/2,menu.height)
+
+  //nail polish
+  // image(polish,windowWidth*4/5,windowHeight/3,polish.width/4,polish.height/4);
+  //flower bouquet
+  // image(bouquet,windowWidth*4/5,windowHeight/2,bouquet.width/4,bouquet.height/4);
+
 }
-  
-//nails
- if(mouseX < windowWidth/3) {
-  image(nails,windowWidth/3,windowHeight/2,nails.width/4, nails.height/4);
+
+class Thing {
+
+  constructor(x, y, name, image) {
+    this.pos = createVector(x, y);
+    this.name = name;
+    this.startingpos = this.pos;
+    this.image = image;
+    this.scale = 1 / 4;
+    this.active = false;
   }
 
-//holding flowers
-if(mouseY > windowHeight/2)
-image(happyflowers,windowWidth/3,windowHeight/2,happyflowers.width/4,happyflowers.height/4);
+  update() {
+    if (this.active == true) {
+      this.pos.x = mouseX;
+      this.pos.y = mouseY;
+    }
+  }
+
+  display() {
+    image(this.image, this.pos.x, this.pos.y, this.image.width * this.scale, this.image.height * this.scale)
 
 
-//menu base
-image(menu,windowWidth*4/5,windowHeight/2,menu.width/2,menu.height)
+  }
 
-//nail polish
-image(polish,windowWidth*4/5,windowHeight/3,polish.width/4,polish.height/4);
-//flower bouquet
-image(bouquet,windowWidth*4/5,windowHeight/2,bouquet.width/4,bouquet.height/4);
+
 
 }
