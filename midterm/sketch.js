@@ -11,11 +11,12 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  imageMode(CENTER);
 }
 
 function draw() {
 //  background(220);
-  image(defaultface,windowWidth/2.3,windowHeight/3.5,defaultface.width/4,defaultface.height/4);
+  image(defaultface,windowWidth/3,windowHeight/2,defaultface.width/4,defaultface.height/4);
   
   
 }
