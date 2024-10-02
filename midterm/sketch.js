@@ -10,12 +10,12 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
 //  background(220);
-  image(defaultface,width/2,height/2,defaultface.width,defaultface.height);
+  image(defaultface,windowWidth/2.3,windowHeight/3.5,defaultface.width/4,defaultface.height/4);
   
   
 }
