@@ -66,6 +66,8 @@ function draw() {
   // nailpolish.display()
   // bouquet.display()
 
+  image(withflowersImg, width/3,height/2,withflowers.size)
+
   for(let i=0; i < things.length; i++) {
     things[i].display()
   }
