@@ -1,20 +1,28 @@
-// images
+// character
 let defaultfaceImg;
+
 let nailsImg;
+let withflowersImg;
+
+let litupImg;
+
+//thing
 let nailpolishImg;
 let bouquetImg;
-let withflowersImg;
 let menuImg;
 let appleImg;
+let lightbulbImg;
+let vacuumImg;
+let musicImg;
 
 // things
-let defaultface;
-let nails;
 let nailpolish;
 let bouquet;
-let withflowers;
-let menu;
 let apple;
+let lightbulb;
+let vacuum;
+let music;
+//let menu;
 
 let things = [];
 
@@ -22,11 +30,16 @@ function preload() {
   defaultfaceImg = loadImage("midterm_defaultface.png");
   withnailsImg = loadImage("withnails.png");
   nailpolishImg = loadImage("justnailpolish.png");
-  bouquetImg = loadImage("bouquet.png");
   withflowersImg = loadImage("withflowers!.png");
+  bouquetImg = loadImage("bouquet.png");
   menuImg = loadImage("whitemenu.png");
   appleImg = loadImage("apple.png");
+  lightbulbImg = loadImage("lightbulb.png");
+  vacuumImg = loadImage("vacuum.png");
+  musicImg = loadImage("music.png");
+  //litupImg = loadImage("litup.png")
 }
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -35,8 +48,13 @@ function setup() {
   nailpolish = new Thing(200, 100, "nail polish", nailpolishImg);
   bouquet = new Thing(200, 150, "bouquet", bouquetImg);
   apple = new Thing(200,100,"apple", appleImg);
+  lightbulb = new Thing(200,100,"lightbulb", lightbulbImg);
+  vacuum = new Thing(200,100,"vacuum", vacuumImg);
+  music = new Thing(200,100,"music",musicImg);
+  //menu = new Thing(200,100,"menu",menuImg);
+  
 
-  things.push(nailpolish, bouquet,apple)
+  things.push(nailpolish, bouquet,apple,lightbulb,vacuum,music)
 
 }
 
@@ -66,24 +84,16 @@ function mouseDragged() {
 
 function draw() {
   clear();
-
-  // nailpolish.display()
-  // bouquet.display()
-
-
+ 
   for(let i=0; i < things.length; i++) {
     things[i].display()
   }
-  // let t = new Thing();
-  // t.display();
 
   //menu base
-  // image(menu,windowWidth*4/5,windowHeight/2,menu.width/2,menu.height)
+   image(menuImg,windowWidth*9/10,windowHeight/2,menuImg.width/2,menuImg.height/2);
 
-  //nail polish
-  // image(polish,windowWidth*4/5,windowHeight/3,polish.width/4,polish.height/4);
-  //flower bouquet
-  // image(bouquet,windowWidth*4/5,windowHeight/2,bouquet.width/4,bouquet.height/4);
+   image(defaultfaceImg, windowWidth/2.2,windowHeight/1.7,defaultfaceImg.width/4,defaultfaceImg.height/4);
+
 
 }
 
@@ -110,7 +120,5 @@ class Thing {
 
 
   }
-
-
 
 }
