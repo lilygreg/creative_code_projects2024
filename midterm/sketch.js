@@ -24,7 +24,7 @@ function preload() {
   nailpolishImg = loadImage("justnailpolish.png");
   bouquetImg = loadImage("bouquet.png");
   withflowersImg = loadImage("withflowers!.png");
-  menuImg = loadImage("menu.png");
+  menuImg = loadImage("whitemenu.png");
   appleImg = loadImage("apple.png");
 }
 
