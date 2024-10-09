@@ -5,6 +5,7 @@ let nailpolishImg;
 let bouquetImg;
 let withflowersImg;
 let menuImg;
+let appleImg;
 
 // things
 let defaultface;
@@ -13,6 +14,7 @@ let nailpolish;
 let bouquet;
 let withflowers;
 let menu;
+let apple;
 
 let things = [];
 
@@ -23,6 +25,7 @@ function preload() {
   bouquetImg = loadImage("bouquet.png");
   withflowersImg = loadImage("withflowers!.png");
   menuImg = loadImage("menu.png");
+  appleImg = loadImage("apple.png");
 }
 
 function setup() {
@@ -31,8 +34,9 @@ function setup() {
 
   nailpolish = new Thing(200, 100, "nail polish", nailpolishImg);
   bouquet = new Thing(200, 150, "bouquet", bouquetImg);
+  apple = new Thing(200,100,"apple", appleImg);
 
-  things.push(nailpolish, bouquet)
+  things.push(nailpolish, bouquet,apple)
 
 }
 
@@ -66,7 +70,6 @@ function draw() {
   // nailpolish.display()
   // bouquet.display()
 
-  image(withflowersImg, width/3,height/2,withflowers.size)
 
   for(let i=0; i < things.length; i++) {
     things[i].display()
