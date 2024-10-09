@@ -55,7 +55,7 @@ function setup() {
 
   //menu = new Thing(width - 50, 0, "menu", menuImg);
 
-  nailpolish = new Thing(windowWidth * 9 / 10,150, "nail polish", nailpolishImg,withnailsImg);
+  nailpolish = new Thing(windowWidth * 9 / 10, 150, "nailpolish", nailpolishImg,withnailsImg);
   bouquet = new Thing( windowWidth * 9 / 10, 250, "bouquet", bouquetImg,withflowersImg);
   apple = new Thing( windowWidth * 9 / 10, 360, "apple", appleImg, peevedImg);
   lightbulb = new Thing( windowWidth * 9 / 10, 450, "lightbulb", lightbulbImg, litupImg);
@@ -96,9 +96,7 @@ function mouseReleased() {
   // if it is, make robot react and return thing to its startPos
   if(dist(activeThing.pos.x, activeThing.pos.y,mouseX, mouseY)< 10){
    robotState = activeThing.reactionImage;
-
-
-    let time = 2000; 
+    let time = 3000; 
     // change robot reaction image for X amount of time
     function reaction(){
       robotState = defaultfaceImg;
