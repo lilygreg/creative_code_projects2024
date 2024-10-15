@@ -1,3 +1,6 @@
+// DOUG 1: create a variable to store the background image
+let bg;
+
 // character
 let defaultfaceImg;
 let withnailsImg;
@@ -46,21 +49,25 @@ function preload() {
   peevedImg = loadImage("peeved.png");
   listeningImg = loadImage("listening.png");
   scaryvacuumImg = loadImage("scaryvacuum.png");
+
+    // DOUG 2: load the background image
+    bg = loadImage("codingbackdrop.jpg")
 }
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // DOUG 3: set the width and height to static (unchanging) values so that everything moves correctly if you resize the page. I chose 1400x778 since these dimensions seemed to work well based on your image sized.
+  createCanvas(1400, 778);
   imageMode(CENTER);
 
-  //menu = new Thing(width - 50, 0, "menu", menuImg);
+  robotPosition = createVector(width / 2.2, height / 1.7) // DOUG 4: initialize the robotPosition with a vector using the values you used below
 
-  nailpolish = new Thing(windowWidth * 9 / 10, 150, "nailpolish", nailpolishImg,withnailsImg);
-  bouquet = new Thing( windowWidth * 9 / 10, 250, "bouquet", bouquetImg,withflowersImg);
-  apple = new Thing( windowWidth * 9 / 10, 360, "apple", appleImg, peevedImg);
-  lightbulb = new Thing( windowWidth * 9 / 10, 450, "lightbulb", lightbulbImg, litupImg);
-  vacuum = new Thing( windowWidth * 9 / 10, 550, "vacuum", vacuumImg, scaryvacuumImg);
-  music = new Thing( windowWidth * 9 / 10, 650, "music", musicImg, listeningImg);
+  nailpolish = new Thing(width * 9 / 10, 130, "nailpolish", nailpolishImg, withnailsImg);
+  bouquet = new Thing(width * 9 / 10, 250, "bouquet", bouquetImg, withflowersImg);
+  apple = new Thing(width * 9 / 10, 360, "apple", appleImg, peevedImg);
+  lightbulb = new Thing(width * 9 / 10, 450, "lightbulb", lightbulbImg, litupImg);
+  vacuum = new Thing(width * 9 / 10, 558, "vacuum", vacuumImg, scaryvacuumImg);
+  music = new Thing(width * 9 / 10, 664, "music", musicImg, listeningImg);
   
 
   robotState = defaultfaceImg;
@@ -69,13 +76,31 @@ function setup() {
 
 }
 
+
+function draw() {
+  // DOUG 5: draw the background image. (use push() and pop() to isolate setting imageMode to CORNER so that that image gets drawn correctly)
+  push()
+  imageMode(CORNER)
+  image(bg, 0, 0, width, height)
+  pop()
+  //menu base
+  image(menuImg, width * 9 / 10, height / 2, menuImg.width / 2, menuImg.height / 1.8);
+  image(robotState, robotPosition.x, robotPosition.y, robotState.width / 3.8, robotState.height / 3.8); // DOUG 6: drawing the robot using "robotPosition.x" and "robotPosition.y" instead
+  // draw all the things, in reverse order of how they were added to the array in setup()
+  // DOUG 7: made it "i >= 0" instead of just "i > 0", I realized it was leaving out the nail polish
+  for (let i = things.length - 1; i >= 0; i--) {
+    things[i].update()
+    things[i].display()
+  }
+}
+
 function mouseDragged() {
   for (let i = 0; i < things.length; i++) {
     let thing = things[i];
     if (dist(mouseX, mouseY, thing.pos.x, thing.pos.y) < 100 && pickedUp == false) {
       thing.active = true;
       pickedUp = true;
-      console.log(thing)
+        // console.log(thing)
     }
     thing.update()
   }
@@ -83,7 +108,7 @@ function mouseDragged() {
 
 function mouseReleased() {
 
-  // find the active thing
+    // DOUG 8: find the active thing and store it in a local variable called activeThing
   let activeThing;
   for (let i = 0; i < things.length; i++) {
     let thing = things[i];
@@ -94,40 +119,30 @@ function mouseReleased() {
   // MAKE ROBOT REACT IF ITEM IS DROPPED ON ROBOT
   // check if the active thing is near the robot
   // if it is, make robot react and return thing to its startPos
-  if(dist(activeThing.pos.x, activeThing.pos.y,mouseX, mouseY)< 10){
-   robotState = activeThing.reactionImage;
-    let time = 3000; 
-    // change robot reaction image for X amount of time
-    function reaction(){
-      robotState = defaultfaceImg;
-    }
-    setTimeout(reaction, time);
-  }else{
-    thing.pos = thing.startingpos;
+  // if(dist(activeThing.pos.x, activeThing.pos.y,mouseX, mouseY)< 10){
+  //  robotState = activeThing.reactionImage;
+
+    // DOUG 3: the above commented out line was your original if-statement, which was checking the distance between the activeThing's position and the mouse position...the problem is, when a thing is active, it's being moved around using the mouse position, so its position and the mouse are equal to each other! So the distance between them will always be 0...which is less than 10 ;)
+
+  // DOUG 4: this line compares the location of the item to the location of the robot, using the new robotPosition variable I created above
+  if (pickedUp == true) {
+    if (dist(activeThing.pos.x, activeThing.pos.y, robotPosition.x, robotPosition.y) < 250) {
+      robotState = activeThing.reactionImage;
+      // change robot reaction image for X amount of time
+      let time = 2000;
+      function reaction() {
+        robotState = defaultfaceImg;
+      }
+      setTimeout(reaction, time);
+
+      activeThing.pos = createVector(activeThing.startPos.x, activeThing.startPos.y) // DOUG 10: return the thing to its starting position! All you have to do is set the activeThing's position to its own starting position. For complicated reasons, you actually have to use createVector again, rather than simpling putting "activeThing.pos = activeThing.startPos" 
   }
-
-  // if it is not, return thing to its startPos
-
-  // deactivate everything
+  // as the last step in the mouseReleased function, deactivate everything
   pickedUp = false;
   for (let i = 0; i < things.length; i++) {
     things[i].active = false;
   }
 }
-
-
-function draw() {
-  clear();
-
-  //menu base
-  image(menuImg, windowWidth * 9 / 10, windowHeight / 2, menuImg.width / 2, menuImg.height / 1.8);
-
-  image(robotState, windowWidth / 2.2, windowHeight / 1.7, robotState.width / 3.8, robotState.height / 3.8);
-
-  for (let i = things.length - 1; i > 0; i--) {
-    things[i].display()
-  }
-
 
 }
 
@@ -135,13 +150,15 @@ class Thing {
 
   constructor(x, y, name, image, reactionImage) {
     this.startPos = createVector(x, y);
-    this.pos = this.startPos;
+    // DOUG 12: for complicated reasons, we have to "copy" this.startPos into this.pos like this:
+    this.pos = createVector(this.startPos.x, this.startPos.y);
+    // this.pos = this.startPos (this doesn't work correctly)
     this.name = name;
-    this.startingpos = this.pos;
     this.image = image;
     this.reactionImage = reactionImage;
     this.scale = 1 / 4;
     this.active = false;
+
   }
 
   update() {
