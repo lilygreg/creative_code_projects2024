@@ -63,7 +63,7 @@ function setup() {
   robotPosition = createVector(width / 2.2, height / 1.7) // DOUG 4: initialize the robotPosition with a vector using the values you used below
 
   nailpolish = new Thing(width * 9 / 10, 130, "nailpolish", nailpolishImg, withnailsImg);
-  bouquet = new Thing(width * 9 / 10, 250, "bouquet", bouquetImg, withflowersImg);
+  bouquet = new Thing(width * 9 / 10, 257, "bouquet", bouquetImg, withflowersImg);
   apple = new Thing(width * 9 / 10, 360, "apple", appleImg, peevedImg);
   lightbulb = new Thing(width * 9 / 10, 450, "lightbulb", lightbulbImg, litupImg);
   vacuum = new Thing(width * 9 / 10, 558, "vacuum", vacuumImg, scaryvacuumImg);
