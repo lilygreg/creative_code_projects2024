@@ -10,7 +10,7 @@ let box;
 
 function setup() {
   // creates a canvas that fills the screen
-  new Canvas();
+  createCanvas(400, 400)
 }
 
 function draw() {
