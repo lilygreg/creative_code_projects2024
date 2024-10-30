@@ -4,7 +4,8 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 255);
+  clear();
+  //background(255, 255, 255);
   console.log(mouseX, mouseY);
   noStroke();
 
