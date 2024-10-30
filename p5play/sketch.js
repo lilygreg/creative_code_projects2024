@@ -6,7 +6,7 @@
 // Learn more about p5play here -> https://p5play.org/learn
 
 let instructions = 'Tap to create a new sprite, drag to throw it!';
-let circle;
+let box;
 
 function setup() {
   // creates a canvas that fills the screen
@@ -23,18 +23,18 @@ function draw() {
 
   if (mouse.presses()) {
     // by default, sprites collide with other sprites
-    circle = new Sprite(mouse.x, mouse.y, 30, 30);
+    box = new Sprite(mouse.x, mouse.y, 30, 30);
   }
   
   if (mouse.dragging()) {
-    circle.moveTowards(mouse); // throw the box!
+    box.moveTowards(mouse); // throw the box!
   }
   
   // if the user didn't throw the box,
   // then give it a random speed and direction
   if (mouse.released() && !mouse.dragged()) {
-    circle.speed = random(0, 5);
-    circle.direction = random(0, 360);
+    box.speed = random(0, 5);
+    box.direction = random(0, 360);
   }
 
   // by default, all sprites are drawn by p5play
