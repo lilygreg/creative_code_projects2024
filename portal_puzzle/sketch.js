@@ -1,19 +1,18 @@
-let bg;
+let castle;
 
 function preload(){
-    bg = loadImage("castlecode.jpg");
+    castle = loadImage("castlecode.jpg");
 }
 
 function setup(){
-    createCanvas(1400, 800);
+    createCanvas(1440, 778);
     imageMode(CENTER);
 
 }
 
 function draw(){
-    push()
-    imageMode(CORNER)
-    image(bg, 0, 0, width, height)
-    pop()
-
+   push();
+   imageMode(CORNER);
+    image(castle, 0, 0, width, height)
+    pop();
 }
