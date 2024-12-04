@@ -12,6 +12,7 @@ let bgImg;
 
 // bg images
 let castlebg;
+let officebg;
 
 function initAssets() {
 
@@ -21,7 +22,6 @@ function initAssets() {
     staticObject.height = 80;
     staticObject.x = width / 2;
     staticObject.y = height / 1.5;
-    staticObject.color = "#7364d1";
     staticObject.name = "door";
     staticObject.collider = "static";
 
@@ -29,12 +29,12 @@ function initAssets() {
     // scene1 tools
     let raccoon = new Sprite();
     raccoon = new Sprite();
-    raccoon.width = 50;
-    raccoon.height = 50;
-    raccoon.x = width / 2;
-    raccoon.y = height / 3;
-    raccoon.color = "#fcba03";
-    raccoon.text = "raccoon"
+    raccoon.scale = 1/2
+    raccoon.x = width / 2.2;
+    raccoon.y = height *3.2/4;
+    raccoon.name = "raccoon"
+    raccoon.image = raccoonImg;
+    raccoon.collider = "static";
     
     // let key = new Sprite();
 
