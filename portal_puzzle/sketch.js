@@ -1,27 +1,44 @@
 
 
+
 //scene 1 items
+let castle;
 let raccoonImg;
+
 let cupcakeImg;
 let keyImg;
 let hammerImg;
 let ticketImg;
+let bookImg;
 
+//scene 2 items
+let drOffice;
+let catdocImg; 
 
-let cupcake;
-let key;
-let hammer;
-let ticket;
+let syringeImg;
+let appleImg;
+let pillImg;
+let shoeImg;
+let sawImg;
 
 
 function preload() {
     castle = loadImage("castlecode.jpg");
-    // scene 1 items
+    drOffice = loadImage("scene2bg.jpg")
+ // scene 1 items
     raccoonImg = loadImage("raccoon.png");
     cupcakeImg = loadImage("cupcake.png");
     keyImg = loadImage("key.png");
     hammerImg = loadImage("hammer.png");
     ticketImg = loadImage("planeticket.png");
+    bookImg = loadImage("book.png");
+ //scene 2 items
+    syringeImg = loadImage("syringe.png");
+    appleImg = loadImage("apple.png");
+    pillImg = loadImage("pillbottle.png");
+    shoeImg = loadImage("brownshoe.png");
+    sawImg = loadImage("handsaw.png");
+    catdocImg = loadImage("catdr.png");
 }
 
 function setup() {
