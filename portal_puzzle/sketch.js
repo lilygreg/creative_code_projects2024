@@ -3,7 +3,9 @@
 
 //scene 1 items
 let castle;
+let scene1Answer;
 let raccoonImg;
+// let raccoonImg2
 
 let cupcakeImg;
 let keyImg;
@@ -21,12 +23,18 @@ let pillImg;
 let shoeImg;
 let sawImg;
 
+let sceneCounter = 0;
+
 
 function preload() {
     castle = loadImage("castlecode.jpg");
-    drOffice = loadImage("scene2bg.jpg")
+    scene1Answer = loadImage("scene1answer.jpg");
+    drOffice = loadImage("scene2bg.jpg");
+    scene2Answer = loadImage("scene2answer.jpg");
  // scene 1 items
     raccoonImg = loadImage("raccoon.png");
+    // raccoonImg2 = loadImage("...")
+    
     cupcakeImg = loadImage("cupcake.png");
     keyImg = loadImage("key.png");
     hammerImg = loadImage("hammer.png");
@@ -46,14 +54,22 @@ function setup() {
     initAssets();
     imageMode(CENTER);
     tools = s1Tools;
+    bgImg = backgrounds[sceneCounter].mainImg
 }
 
 function draw() {
+
+    clear()
+
     push();
     imageMode(CORNER);
-    image(castle, 0, 0, width, height)
+
+    image(bgImg, 0, 0, width, height)
     pop();
 
+    // if (mouse.dragging()) {
+    //     book.moveTowards(mouse);
+    //   }
     // for (let i = 0; i < sprites.length; i++) {
     //     let s = sprites[i]
     //     s.overlap(sprite1, function () {
@@ -68,14 +84,35 @@ function draw() {
     //     });
     //   }
 
+
+
     for(let i = 0; i < tools.length; i++) {
         let tool = tools[i];
+        if (tool.isTrigger) {
+            triggerObject = tool;
+        }
 
-        // 
+        if(tool.mouse.dragging()) {
+            tool.moveTowards(mouse)
+        }
 
 
-        tool.overlap(staticObject, function(){
-           // do stuff when overlap happens
+        tool.overlap(triggerObject, function(){
+           // do stuff when overlap happens (immediately)
+           if(tool.isActivator) {
+            
+            triggerObject.image = triggerObject.reactionImage
+            bgImg = backgrounds[sceneCounter].reactionImg
+           // console.log("cool")
+            
+            // do stuff after X amount of time
+            setTimeout(function(){
+                console.log("nice")
+                sceneCounter++;
+                bgImg = backgrounds[sceneCounter].mainImg
+            }, 3000)
+           }
+           
         })
     }
 }
