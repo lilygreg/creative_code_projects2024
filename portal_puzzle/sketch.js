@@ -5,7 +5,6 @@
 let castle;
 let scene1Answer;
 let raccoonImg;
-// let raccoonImg2
 
 let cupcakeImg;
 let keyImg;
@@ -15,6 +14,7 @@ let bookImg;
 
 //scene 2 items
 let drOffice;
+let scene2Answer
 let catdocImg; 
 
 let syringeImg;
@@ -58,31 +58,13 @@ function setup() {
 }
 
 function draw() {
-
-    clear()
+  clear()
 
     push();
     imageMode(CORNER);
 
     image(bgImg, 0, 0, width, height)
     pop();
-
-    // if (mouse.dragging()) {
-    //     book.moveTowards(mouse);
-    //   }
-    // for (let i = 0; i < sprites.length; i++) {
-    //     let s = sprites[i]
-    //     s.overlap(sprite1, function () {
-    //       sprite1.color = "#ff0000";
-    //       console.log(s.text)
-    //       if (s.specialItem === true) {
-    //         sprite1.color = "#ffff00";
-    //         setTimeout(function () {
-    //           sprite1.remove();
-    //         }, 3000);
-    //       }
-    //     });
-    //   }
 
 
 
@@ -91,6 +73,8 @@ function draw() {
         if (tool.isTrigger) {
             triggerObject = tool;
         }
+    
+    tool.drag = 10 //stops them from flying off the page
 
         if(tool.mouse.dragging()) {
             tool.moveTowards(mouse)
@@ -101,9 +85,9 @@ function draw() {
            // do stuff when overlap happens (immediately)
            if(tool.isActivator) {
             
-            triggerObject.image = triggerObject.reactionImage
+            triggerObject.remove()
             bgImg = backgrounds[sceneCounter].reactionImg
-           // console.log("cool")
+           
             
             // do stuff after X amount of time
             setTimeout(function(){
