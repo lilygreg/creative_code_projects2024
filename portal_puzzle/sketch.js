@@ -62,11 +62,8 @@ function draw() {
 
     push();
     imageMode(CORNER);
-
     image(bgImg, 0, 0, width, height)
     pop();
-
-
 
     for(let i = 0; i < tools.length; i++) {
         let tool = tools[i];
@@ -80,7 +77,6 @@ function draw() {
             tool.moveTowards(mouse)
         }
 
-
         tool.overlap(triggerObject, function(){
            // do stuff when overlap happens (immediately)
            if(tool.isActivator) {
@@ -91,7 +87,6 @@ function draw() {
             
             // do stuff after X amount of time
             setTimeout(function(){
-                console.log("nice")
                 sceneCounter++;
                 bgImg = backgrounds[sceneCounter].mainImg
             }, 3000)

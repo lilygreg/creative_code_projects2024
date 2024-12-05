@@ -76,19 +76,42 @@ function initAssets() {
 
 
     // scene2 tools
-    // let catdoc = new Sprite();
-    // catdoc = new Sprite();
-    // catdoc.scale = .7
-    // catdoc.x = width/2
-    // catdoc.y = height/2
-    // catdoc.image = catdocImg;
 
-    // let syringe = new Sprite();
-    // syringe = new Sprite();
-    // syringe.scale = 0.3;
-    // syringe.x = 
-    // syringe.y = 
-    // syringe.image = syringeImg;
+    let catdoc = new Sprite();
+    catdoc.scale = .7
+    catdoc.x = width/2
+    catdoc.y = height/2
+    catdoc.image = catdocImg;
+
+    let syringe = new Sprite();
+    syringe.scale = 0.3;
+    syringe.x = width/10;
+    syringe.y = height/1.56;
+    syringe.image = syringeImg;
+
+    let apple = new Sprite();
+    apple.image = appleImg;
+    apple.scale = .8
+    apple.x = width/4.6;
+    apple.y = height/2.1;
+
+    let pill = new Sprite();
+    pill.image = pillImg;
+    pill.scale = .7
+    pill.x = width*.94;
+    pill.y = height*.77;
+
+    let shoe = new Sprite();
+    shoe.image = shoeImg;
+    shoe.x = width*.40;
+    shoe.y = height*.90;
+
+    let saw = new Sprite();
+    saw.image = sawImg;
+    saw.x = width/2;
+    saw.y = height/2;
+
+        s2Tools.push(catdoc, syringe, apple, pill, shoe,saw)
 
     // scene3 tools
 }
