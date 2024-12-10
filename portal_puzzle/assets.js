@@ -28,7 +28,13 @@ function initAssets() {
         reactionImg: scene2Answer
     }
 
+    let bgS3 = {
+        mainImg: livingroom,
+        reactionImg: livingroom
+    }
+
     backgrounds.push(bgS1, bgS2);
+
 
     // scene1 tools
     let raccoon = new Sprite();
@@ -82,6 +88,7 @@ function initAssets() {
     catdoc.x = width/2
     catdoc.y = height/2
     catdoc.image = catdocImg;
+    catdoc.isTrigger = true;
 
     let syringe = new Sprite();
     syringe.scale = 0.3;
@@ -111,7 +118,44 @@ function initAssets() {
     saw.x = width/2;
     saw.y = height/2;
 
-        s2Tools.push(catdoc, syringe, apple, pill, shoe,saw)
+        // s2Tools.push(catdoc, syringe, apple, pill, shoe,saw)
 
     // scene3 tools
+
+    let laptop = new Sprite();
+   // laptop.scale = 
+    laptop.x = width/2
+    laptop.y = height/2
+    laptop.image =laptopImg;
+
+    let tshirt = new Sprite();
+    tshirt.scale = 0.3;
+    tshirt.x = width/10;
+    tshirt.y = height/1.56;
+    tshirt.image = tshirtImg;
+
+    let plunger = new Sprite();
+    plunger.image = plungerImg;
+    plunger.scale = .8
+    plunger.x = width/4.6;
+    plunger.y = height/2.1;
+
+    let chips = new Sprite();
+    chips.image = chipsImg;
+    chips.scale = .7
+    chips.x = width*.94;
+    chips.y = height*.77;
+
+    let cleaner = new Sprite();
+    cleaner.image = cleanerImg;
+    cleaner.x = width*.40;
+    cleaner.y = height*.90;
+
+    let screen = new Sprite();
+    screen.image = screenImg;
+    screen.x = width/2;
+    screen.y = height/2;
+    screen.isTrigger = true;
+    screen.collider = "static";
+
 }

@@ -23,6 +23,15 @@ let pillImg;
 let shoeImg;
 let sawImg;
 
+//scene 3 items
+let livingroom;
+let laptopImg;
+let tshirtImg;
+let plungerImg;
+let chipsImg;
+let cleanerImg;
+let screenImg;
+
 let sceneCounter = 0;
 
 
@@ -47,6 +56,14 @@ function preload() {
     shoeImg = loadImage("brownshoe.png");
     sawImg = loadImage("handsaw.png");
     catdocImg = loadImage("catdr.png");
+//scene 3 items
+    laptopImg = loadImage("laptop.png");
+    tshirtImg = loadImage("tshirt.png");
+    plungerImg = loadImage("plunger.png");
+    chipsImg = loadImage("chips.png");
+    cleanerImg = loadImage("cleaner.png");
+    screenImg = loadImage("tvscreen.png");
+    livingroom = loadImage("scene3bgwip.jpg");
 }
 
 function setup() {
@@ -94,4 +111,9 @@ function draw() {
            
         })
     }
+    if (bgImg = backgrounds[2]){
+        s1Tools.remove;
+        s2Tools.push(catdoc, syringe, apple, pill, shoe,saw)
+
+
 }
