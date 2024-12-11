@@ -164,31 +164,38 @@ function initAssets() {
 
     // scene3 tools
 
+    let screen = new Sprite();
+    screen.image = screenImg;
+    screen.x = width*0.175;
+    screen.y = height*0.315;
+    screen.isTrigger = true;
+    screen.collider = "static";
+
     let laptop = new Sprite();
-   // laptop.scale = 
     laptop.x = width/2
     laptop.y = height/2
     laptop.image =laptopImg;
     laptop.collider ="none";
 
     let tshirt = new Sprite();
-    tshirt.x = width/10;
-    tshirt.y = height/1.56;
+    tshirt.scale =1.5
+    tshirt.x = width*.15;
+    tshirt.y = height*.84;
     tshirt.image = tshirtImg;
     tshirt.collider = "none";
 
     let plunger = new Sprite();
     plunger.image = plungerImg;
-    plunger.scale = .8
-    plunger.x = width*3.3;
-    plunger.y = height/2.1;
+    plunger.scale = 1.4
+    plunger.x = width*0.3;
+    plunger.y = height/2.2;
     plunger.collider = "none";
 
     let chips = new Sprite();
     chips.image = chipsImg;
-    chips.scale = .7
-    chips.x = width*.94;
-    chips.y = height*.77;
+    chips.scale = .9
+    chips.x = width*.87;
+    chips.y = height*.90;
     chips.collider = "none";
 
     let cleaner = new Sprite();
@@ -198,13 +205,6 @@ function initAssets() {
     cleaner.isActivator = true;
     cleaner.collider = "none";
     cleaner.sleeping = true;
-
-    let screen = new Sprite();
-    screen.image = screenImg;
-    screen.x = width*0.175;
-    screen.y = height*0.315;
-    screen.isTrigger = true;
-    screen.collider = "static";
 
 
     s3Tools.push(laptop, tshirt, plunger, chips, cleaner, screen)

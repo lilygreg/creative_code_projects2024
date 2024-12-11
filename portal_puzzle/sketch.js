@@ -117,7 +117,7 @@ function draw() {
                 setTimeout(function () {
                     nextScene()
 
-                }, 400)
+                }, 3000)
             }
 
         })
