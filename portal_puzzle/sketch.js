@@ -31,6 +31,7 @@ let plungerImg;
 let chipsImg;
 let cleanerImg;
 let screenImg;
+let scene3answer;
 
 let sceneCounter = 0;
 
@@ -64,6 +65,7 @@ function preload() {
     cleanerImg = loadImage("cleaner.png");
     screenImg = loadImage("tvscreen.png");
     livingroom = loadImage("scene3bgwip.jpg");
+    scene3answer = loadImage("scene3answer.jpg")
 }
 
 function setup() {

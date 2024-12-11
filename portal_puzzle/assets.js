@@ -30,7 +30,7 @@ function initAssets() {
 
     let bgS3 = {
         mainImg: livingroom,
-        reactionImg: livingroom
+        reactionImg: scene3answer
     }
 
     backgrounds.push(bgS1, bgS2);
