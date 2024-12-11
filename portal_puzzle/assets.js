@@ -1,12 +1,15 @@
 // GLOBAL VARIABLES
 
+let toolSceneBank = []
 let tools = []
 
 let backgrounds = [];
 
+let s0Tools = [];
 let s1Tools = [];
 let s2Tools = [];
 let s3Tools = [];
+let s4Tools = [];
 
 //background
 let bgImg;
@@ -17,6 +20,9 @@ let officebg;
 
 function initAssets() {
 
+    let bgS0 = {
+        mainImg: startscreen
+    }
 
     let bgS1 = {
         mainImg: castle,
@@ -37,8 +43,17 @@ function initAssets() {
         mainImg: endscreen
     }
 
-    backgrounds.push(bgS1, bgS2);
+    backgrounds.push(bgS0, bgS1, bgS2, bgS3, bgS4);
 
+    // scene start and end tools
+    let emptySprite = new Sprite();
+    
+    
+    emptySprite.isActivator = true;
+    emptySprite.isTrigger = true;
+    emptySprite.visible = false;
+    s0Tools.push(emptySprite)
+    s4Tools.push(emptySprite);
 
     // scene1 tools
     let raccoon = new Sprite();
@@ -47,7 +62,7 @@ function initAssets() {
     raccoon.y = height *3.2/4;
     raccoon.name = "raccoon"
     raccoon.image = raccoonImg;
-    raccoon.reactionImage = cupcakeImg;
+    // raccoon.reactionImage = cupcakeImg;
     raccoon.collider = "static";
     raccoon.isTrigger = true;
 
@@ -82,7 +97,11 @@ function initAssets() {
     ticket.y = height *9.4/10;
     ticket.image = ticketImg;
 
-        s1Tools.push(raccoon, book,cupcake,hammer, key,ticket);
+    s1Tools.push(raccoon, book,cupcake,hammer, key,ticket);
+    for (let tool of s1Tools) {
+        tool.visible = false;
+    }
+
 
 
     // scene2 tools
@@ -93,6 +112,17 @@ function initAssets() {
     catdoc.y = height/2
     catdoc.image = catdocImg;
     catdoc.isTrigger = true;
+    raccoon.collider = "static";
+
+    // let raccoon = new Sprite();
+    // raccoon.scale = 1/2
+    // raccoon.x = width / 2.2;
+    // raccoon.y = height *3.2/4;
+    // raccoon.name = "raccoon"
+    // raccoon.image = raccoonImg;
+    // raccoon.reactionImage = cupcakeImg;
+    // raccoon.collider = "static";
+    // raccoon.isTrigger = true;
 
     let syringe = new Sprite();
     syringe.scale = 0.3;
@@ -105,6 +135,17 @@ function initAssets() {
     apple.scale = .8
     apple.x = width/4.6;
     apple.y = height/2.1;
+    apple.isActivator = true;
+    apple.collider = "none";
+    apple.sleeping = true;
+
+    // let book = new Sprite();
+    // book.x = width *5.5/7;
+    // book.y = height *8/9;
+    // book.image = bookImg;
+    // book.isActivator = true;
+    // book.collider = "none";
+    // book.sleeping = true;
 
     let pill = new Sprite();
     pill.image = pillImg;
@@ -122,7 +163,12 @@ function initAssets() {
     saw.x = width/2;
     saw.y = height/2;
 
-        // s2Tools.push(catdoc, syringe, apple, pill, shoe,saw)
+    
+
+    s2Tools.push(catdoc, syringe, apple, pill, shoe,saw)
+    for (let tool of s2Tools) {
+        tool.visible = false;
+    }
 
     // scene3 tools
 
@@ -154,6 +200,9 @@ function initAssets() {
     cleaner.image = cleanerImg;
     cleaner.x = width*.40;
     cleaner.y = height*.90;
+    cleaner.isActivator = true;
+    cleaner.collider = "none";
+    cleaner.sleeping = true;
 
     let screen = new Sprite();
     screen.image = screenImg;
@@ -161,5 +210,32 @@ function initAssets() {
     screen.y = height/2;
     screen.isTrigger = true;
     screen.collider = "static";
+
+    s3Tools.push(laptop, tshirt, plunger, chips, cleaner, screen)
+    for (let tool of s3Tools) {
+        tool.visible = false;
+    }
+
+
+    
+
+    toolSceneBank.push(s0Tools, s1Tools, s2Tools, s3Tools, s4Tools)
+
+    function setVisibilityFalse() {
+        // Set visibility to false for all tools in scene1
+        for (let tool of s1Tools) {
+            tool.visible = false;
+        }
+    
+        // Set visibility to false for all tools in scene2
+        for (let tool of s2Tools) {
+            tool.visible = false;
+        }
+    
+        // Set visibility to false for all tools in scene3
+        for (let tool of s3Tools) {
+            tool.visible = false;
+        }
+    }
 
 }
