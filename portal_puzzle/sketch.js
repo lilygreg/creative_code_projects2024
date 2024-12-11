@@ -33,6 +33,9 @@ let cleanerImg;
 let screenImg;
 let scene3answer;
 
+let endscreen;
+let startscreen;
+
 let sceneCounter = 0;
 
 
@@ -66,6 +69,9 @@ function preload() {
     screenImg = loadImage("tvscreen.png");
     livingroom = loadImage("scene3bgwip.jpg");
     scene3answer = loadImage("scene3answer.jpg")
+
+    startscreen = loadImage("startscreen.jpg");
+    endscreen= loadImage("endscreen.jpg");
 }
 
 function setup() {

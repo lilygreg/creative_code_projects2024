@@ -33,6 +33,10 @@ function initAssets() {
         reactionImg: scene3answer
     }
 
+    let bgS4 = {
+        mainImg: endscreen
+    }
+
     backgrounds.push(bgS1, bgS2);
 
 
